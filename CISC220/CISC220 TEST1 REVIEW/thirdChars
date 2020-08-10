@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for ARG in $*
+do
+    echo -n ${ARG:2:1}
+done
+echo

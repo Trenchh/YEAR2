@@ -1,0 +1,41 @@
+#!/bin/bash
+
+if ! [[ $# == 2 ]]
+then
+    echo "Must have 2 arguments" >&2
+    exit 1
+elif ! [[ -d $1 ]]
+then
+    echo "$1 not a directory" >&2
+    exit 1
+elif ! [[ -r $1 ]]
+then
+    echo "$1 not readable" >&2
+    exit 1
+fi
+
+mkdir "$2"
+if ! [[ $? == 0 ]]
+then
+    echo "Error creating $2" >&2
+    exit 1
+fi
+
+for FILE in "$1"/*
+do
+    BASENAME=$(basename $FILE)
+
+    # If there's no . in the name, just add -BACKUP
+    if ! [[ $BASENAME == *.* ]]
+    then
+        echo then
+        NEWNAME="$2/$BASENAME-BACKUP"
+    else    
+        # Need to separate the name and extension of the file to put -BACKUP between them
+        NAME=${BASENAME/.*/}
+        EXT=${BASENAME/*./.}
+        NEWNAME="$2/$NAME-BACKUP$EXT"
+    fi
+
+    cp $FILE $NEWNAME
+done

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if ! [[ -e $1 ]]
+then
+    echo "File does not exist"
+elif ! [[ -w $1 ]]
+then
+    echo "File is not writeable"
+else
+    echo "File is writeable"
+fi

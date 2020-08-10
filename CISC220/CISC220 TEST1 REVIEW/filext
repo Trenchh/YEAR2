@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ $(basename $1) == *.* ]]
+then
+    BASE=$(basename $1)
+    echo ${BASE/*./.}
+fi

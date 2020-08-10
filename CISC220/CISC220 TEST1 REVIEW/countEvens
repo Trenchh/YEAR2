@@ -1,0 +1,11 @@
+#!/bin/bash
+
+ANS=0
+for ARG in $*
+do
+    if (( $ARG % 2 == 0 ))
+    then
+       ((ANS++))
+    fi
+done
+echo $ANS

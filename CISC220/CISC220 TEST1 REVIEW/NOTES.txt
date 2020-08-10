@@ -1,0 +1,30 @@
+Hi everybody!
+
+There were some interesting questions brought up in Wednesday's tutorial about the behaviour of spaces in Bash.
+
+For the most part, you're okay to do spaces how you like but there are a few gotchas.
+
+1.
+When assigning a variable, don't put a space on either side of the =
+MYVAR=5 <-- nice!
+MYVAR = 5 <-- no!
+
+2.
+When writing an if statement with a negation, put a space after the !
+if ! [[ 4 > 3 ]] <-- nice!
+if ![[ 4 > 3 ]] <-- no!
+
+3.
+When writing an if statement with [[ ]] brackets, put spaces after the [[ and before the ]]
+if [[ 4 > 3 ]] <-- nice!
+if [[ 4>3 ]] <-- also nice!
+if [[4>3]] <-- no!
+
+4.
+This is ok!
+(( X = 4 * 2 ))
+
+So is this!
+((X=4*2))
+
+
